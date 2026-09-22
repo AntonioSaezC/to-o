@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Portafolio de diseño de Antonio Sáez: identidad, territorio e innovación sostenible."
+  >
+
+  <title>Antonio Sáez — Portafolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --ink: #111016;
+      --paper: #f1f0ec;
+      --lime: #dfff4f;
+      --purple: #7058f5;
+      --coral: #ff765e;
+      --muted: #66636d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #cbc9c3;
+    }
+
+    .brand {
+      font-family: "Manrope", sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .index {
+      display: flex;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .index a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .index a:hover,
+    .index a:focus-visible {
+      color: var(--ink);
+    }
+
+    header {
+      min-height: 68vh;
+      padding: 76px 0 64px;
+      display: grid;
+      align-content: space-between;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 5px rgba(223, 255, 79, 0.3);
+    }
+
+    h1 {
+      max-width: 980px;
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(3.4rem, 9vw, 8.6rem);
+      font-weight: 700;
+      line-height: 0.87;
+      letter-spacing: -0.075em;
+    }
+
+    h1 span {
+      color: var(--purple);
+    }
+
+    .intro {
+      justify-self: end;
+      max-width: 420px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.55;
+    }
+
+    main {
+      padding: 110px 0 120px;
+      background: var(--ink);
+      color: white;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .count {
+      color: #97939e;
+    }
+
+    .projects {
+      display: grid;
+      gap: 22px;
+    }
+
+    .project {
+      min-height: 430px;
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 28px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+    }
+
+    .project.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    .project:nth-child(1) {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .project:nth-child(2) {
+      background: var(--purple);
+    }
+
+    .project:nth-child(3) {
+      background: var(--coral);
+      color: var(--ink);
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .project-body {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: end;
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project h3 {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.8rem, 7vw, 6.8rem);
+      font-weight: 700;
+      line-height: 0.88;
+      letter-spacing: -0.065em;
+    }
+
+    .project p {
+      max-width: 360px;
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    .shape {
+      position: absolute;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      opacity: 0.16;
+      pointer-events: none;
+    }
+
+    .shape.one {
+      width: 330px;
+      height: 330px;
+      top: -16%;
+      right: 8%;
+    }
+
+    .shape.two {
+      width: 180px;
+      height: 180px;
+      top: 22%;
+      right: -2%;
+    }
+
+    footer {
+      padding: 80px 0 38px;
+    }
+
+    footer .top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 40px;
+    }
+
+    footer p {
+      max-width: 420px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .contact {
+      text-align: right;
+    }
+
+    .contact a {
+      display: inline-block;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(1.3rem, 3vw, 3rem);
+      font-weight: 700;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .footline {
+      margin-top: 70px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #cbc9c3;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 700px) {
+      .wrap {
+        width: min(calc(100% - 28px), 1180px);
+      }
+
+      nav {
+        height: 70px;
+      }
+
+      .index a:not(:last-child) {
+        display: none;
+      }
+
+      header {
+        min-height: 72vh;
+        padding: 55px 0 42px;
+        gap: 50px;
+      }
+
+      .intro {
+        justify-self: start;
+      }
+
+      main {
+        padding: 76px 0;
+      }
+
+      .project {
+        min-height: 500px;
+        padding: 24px;
+        border-radius: 22px;
+      }
+
+      .project-body {
+        grid-template-columns: 1fr;
+      }
+
+      footer .top {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        text-align: left;
+      }
+
+      .footline {
+        gap: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .project {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <nav aria-label="Navegación principal">
+      <a class="brand" href="#inicio">ANTONIO SÁEZ®</a>
+
+      <div class="index">
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+
+    <header id="inicio">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        Diseño + ingeniería · Santiago, Chile
+      </div>
+
+      <h1>
+        Diseño ideas que <span>conectan.</span>
+      </h1>
+
+      <p class="intro">
+        Una selección de proyectos donde identidad, territorio y
+        sostenibilidad se transforman en experiencias concretas.
+      </p>
+    </header>
+  </div>
+
+  <main id="trabajos">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>
+          Trabajo<br>
+          seleccionado
+        </h2>
+
+        <span class="count">01—03</span>
+      </div>
+
+      <section class="projects" aria-label="Proyectos destacados">
+        <article class="project">
+          <div class="meta">
+            <span>Identidad visual</span>
+            <span>2026</span>
+          </div>
+
+          <span class="shape one"></span>
+          <span class="shape two"></span>
+
+          <div class="project-body">
+            <h3>
+              Baldosas<br>
+              Valdés
+            </h3>
+
+            <p>
+              Una propuesta gráfica que transforma fauna e identidad chilena
+              en un lenguaje modular, simple y reproducible sobre baldosa.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="meta">
+            <span>Territorio + información</span>
+            <span>2026</span>
+          </div>
+
+          <span class="shape one"></span>
+          <span class="shape two"></span>
+
+          <div class="project-body">
+            <h3>
+              Senderos<br>
+              UAI
+            </h3>
+
+            <p>
+              Sistema de orientación y guía digital para conocer los senderos
+              del campus Peñalolén y fomentar el cuidado de su entorno natural.
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="meta">
+            <span>Biomímesis + agua</span>
+            <span>2026</span>
+          </div>
+
+          <span class="shape one"></span>
+          <span class="shape two"></span>
+
+          <div class="project-body">
+            <h3>
+              Atrapanieblas<br>
+              urbano
+            </h3>
+
+            <p>
+              Dispositivo inspirado en sistemas naturales que captura humedad
+              ambiental y la conduce hacia árboles en zonas de escasez hídrica.
+            </p>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer id="contacto">
+    <div class="wrap">
+      <div class="top">
+        <div>
+          <h2>Hablemos.</h2>
+
+          <p>
+            Disponible para colaboraciones, proyectos de diseño y nuevas ideas
+            que conecten personas con su entorno.
+          </p>
+        </div>
+
+        <div class="contact">
+          <a href="mailto:antoventurasc2131@gmail.com">
+            antoventurasc2131@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="footline">
+        <span>© <span id="year"></span> Antonio Sáez</span>
+        <span>Diseñado en Santiago</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    document.querySelectorAll(".project").forEach((project) => {
+      observer.observe(project);
+    });
+  </script>
+</body>
+</html>
